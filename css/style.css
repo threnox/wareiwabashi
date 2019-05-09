@@ -1,0 +1,416 @@
+@charset "UTF-8";
+/*** CSSreset ***/
+* {
+  box-sizing: border-box; }
+
+body {
+  color: #333;
+  font-family: 'Sawarabi Gothic', '游ゴシック Medium', YuGothic, YuGothicM, 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, sans-serif;
+  overflow-x: hidden; }
+
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+p, section, article, header, footer,
+nav, form, input, div {
+  margin: 0;
+  padding: 0; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+table {
+  border-collapse: collapse; }
+
+/*** media query ***/
+/*** other @mixin ***/
+/*** global ***/
+main {
+  display: block; }
+
+.container {
+  max-width: 1200px; }
+
+.line {
+  width: 100%; }
+
+.txt-style {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 1.7; }
+
+.br-xs {
+  display: none; }
+  @media screen and (max-width: 576px) {
+    .br-xs {
+      display: block; } }
+
+.photo {
+  margin: 0 auto;
+  box-shadow: 5px 5px 5px 5px;
+  max-width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translate(0, 50px);
+  transition: all 1.5s; }
+  .photo.fade-in {
+    opacity: 1;
+    transform: translate(0, 0); }
+  @media screen and (max-width: 992px) {
+    .photo {
+      max-width: 80%; } }
+  @media screen and (max-width: 768px) {
+    .photo {
+      max-width: 100%; } }
+
+/*** header ***/
+header {
+  position: relative; }
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  opacity: 0.8;
+  width: 100%;
+  background-image: url("../img/bg-01.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .nav-bar img {
+    height: 48px; }
+  .nav-bar .container {
+    height: 56px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+
+@media screen and (max-width: 768px) {
+  .nav-list {
+    display: none; } }
+.nav-list li {
+  display: inline-block;
+  padding: 0 4px 0px 4px;
+  box-sizing: content-box;
+  color: #fff;
+  font-size: 1.2rem; }
+  .nav-list li a {
+    color: #fff;
+    transition: 0.2s; }
+    .nav-list li a:hover {
+      border-bottom: solid 3px #fff;
+      color: #fff;
+      text-decoration: none; }
+
+#menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 16px 32px 0 32px;
+  opacity: 0.9;
+  width: 50%;
+  height: 240px;
+  z-index: 999;
+  background-image: url("../img/bg-01.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  #menu li {
+    margin-bottom: 4px; }
+  #menu a {
+    border-bottom: solid 1px #fff;
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: 0.2s; }
+    #menu a:hover {
+      border-bottom: solid 3px #fff; }
+
+#nav-btn {
+  display: none; }
+  @media screen and (max-width: 768px) {
+    #nav-btn {
+      display: block; }
+      #nav-btn:hover {
+        cursor: pointer; } }
+  #nav-btn i {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 12px 16px 0 0;
+    z-index: 9999;
+    color: #fff;
+    font-size: 2rem; }
+    #nav-btn i:nth-of-type(2) {
+      display: none;
+      padding-right: 20px; }
+
+/*** top ***/
+.top {
+  position: relative;
+  background-image: url("../img/bg-01.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .top .inner {
+    width: 75%;
+    height: 100vh;
+    background-image: url("../img/bg-top.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: auto; }
+  .top-txtbox {
+    position: absolute;
+    top: 37%;
+    left: 55.5%;
+    color: #fff;
+    font-family: 'Noto Serif JP', 游明朝, 'Yu Mincho', YuMincho, 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', HGS明朝E, メイリオ, Meiryo, serif; }
+    @media screen and (max-width: 576px) {
+      .top-txtbox {
+        top: 41%; } }
+    .top-txtbox h1 {
+      padding: 8px;
+      font-size: 3rem;
+      letter-spacing: 4px; }
+      @media screen and (max-width: 992px) {
+        .top-txtbox h1 {
+          font-size: 2.5rem; } }
+      @media screen and (max-width: 768px) {
+        .top-txtbox h1 {
+          font-size: 1.7rem; } }
+      @media screen and (max-width: 576px) {
+        .top-txtbox h1 {
+          font-size: 1rem; } }
+    .top-txtbox p {
+      font-size: 1.2rem;
+      margin: 10px 0 0 12px; }
+      @media screen and (max-width: 768px) {
+        .top-txtbox p {
+          font-size: 1rem; } }
+      @media screen and (max-width: 576px) {
+        .top-txtbox p {
+          font-size: 0.8rem; } }
+
+/*** intro ***/
+.intro {
+  margin: 80px 0;
+  background-image: url("../img/bg-02.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .intro .container {
+    padding: 80px 15px;
+    background-color: rgba(255, 255, 255, 0.5); }
+  .intro .inner {
+    margin: 0 auto;
+    text-align: center; }
+  .intro-txt {
+    font-size: 1.5rem; }
+  .intro p:first-of-type {
+    margin-bottom: 16px; }
+
+/*** gallery ***/
+.gallery {
+  padding: 0 24px; }
+  @media screen and (max-width: 992px) {
+    .gallery {
+      padding: 0; } }
+  .gallery .col-lg-3 {
+    text-align: center; }
+    @media screen and (max-width: 768px) {
+      .gallery .col-lg-3 {
+        padding: 0 30px; } }
+  .gallery-txt {
+    margin: 80px auto;
+    padding: 0 24px; }
+  @media screen and (max-width: 992px) {
+    .gallery-top .txtbox {
+      margin-top: 80px; } }
+  .gallery .col-lg-3:first-of-type {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end; }
+    .gallery .col-lg-3:first-of-type img {
+      width: 100%; }
+  .gallery-mid {
+    margin: 80px auto;
+    padding: 80px;
+    background-image: url("../img/bg-03.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    @media screen and (max-width: 768px) {
+      .gallery-mid {
+        display: block;
+        padding: 80px 0; } }
+    @media screen and (max-width: 992px) {
+      .gallery-mid p {
+        font-size: 16px; } }
+    .gallery-mid-img {
+      text-align: center;
+      width: 65%; }
+      @media screen and (max-width: 992px) {
+        .gallery-mid-img {
+          width: 90%;
+          text-align: left; } }
+      @media screen and (max-width: 768px) {
+        .gallery-mid-img {
+          margin: 0 auto;
+          width: 85%; } }
+    .gallery-mid .container {
+      position: relative; }
+    .gallery-mid-txt {
+      position: absolute;
+      top: 20%;
+      right: 0;
+      padding: 24px;
+      background-color: #333;
+      box-shadow: 0px 0px 8px 8px #fff;
+      color: #fff;
+      width: 50%; }
+      @media screen and (max-width: 768px) {
+        .gallery-mid-txt {
+          position: static;
+          margin: 24px auto 0;
+          padding: 16px;
+          width: 85%; } }
+  .gallery-bottom {
+    margin-bottom: 80px; }
+    .gallery-bottom .col-lg-3:nth-of-type(2) {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end; }
+      .gallery-bottom .col-lg-3:nth-of-type(2) img {
+        width: 100%; }
+    @media screen and (max-width: 992px) {
+      .gallery-bottom .txtbox {
+        margin-bottom: 80px; } }
+
+/*** info ***/
+.info {
+  padding: 80px;
+  background-image: url("../img/bg-02.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  @media screen and (max-width: 576px) {
+    .info {
+      padding: 24px; } }
+  .info h1 {
+    margin-bottom: 24px; }
+  .info .inner {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 24px; }
+
+.schedule {
+  margin-bottom: 80px; }
+  @media screen and (max-width: 576px) {
+    .schedule {
+      margin-bottom: 40px; } }
+  @media screen and (max-width: 576px) {
+    .schedule-txt {
+      font-size: 1.1rem; } }
+
+.times {
+  margin: 16px 0;
+  font-size: 1.6rem;
+  font-weight: 900; }
+
+.note {
+  margin-top: 24px;
+  font-size: 1rem; }
+  .note a {
+    text-decoration: none; }
+
+.map::after {
+  content: '';
+  display: block;
+  clear: both; }
+.map-txt {
+  float: left;
+  margin-right: 8px;
+  width: calc(50% - 80px * 0.1); }
+  @media screen and (max-width: 768px) {
+    .map-txt {
+      margin: 0 0 24px 0;
+      width: 100%; } }
+  @media screen and (max-width: 576px) {
+    .map-txt p {
+      font-size: 1.1rem; } }
+
+.gglmap {
+  float: right;
+  margin-left: 8px;
+  width: calc(50% - 80px * 0.1); }
+  @media screen and (max-width: 768px) {
+    .gglmap {
+      margin: 0 0 0 0;
+      width: 100%; } }
+  .gglmap .inner {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    overflow: hidden; }
+    .gglmap .inner iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+
+/*** about ***/
+.about {
+  margin: 136px 0 80px 0;
+  background-image: url("../img/bg-02.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .about .container {
+    padding: 40px 80px;
+    background-color: rgba(255, 255, 255, 0.5); }
+  .about a:hover {
+    text-decoration: none; }
+
+/*** footer ***/
+footer {
+  margin-top: 80px;
+  background-image: url("../img/bg-03.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  footer .container {
+    padding: 40px 80px;
+    background-color: rgba(255, 255, 255, 0.5); }
+  footer a {
+    color: #333; }
+    footer a:hover {
+      color: #333;
+      text-decoration: none; }
+  footer li:last-child {
+    padding: 16px 0 24px 0; }
+
+.copy-r {
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

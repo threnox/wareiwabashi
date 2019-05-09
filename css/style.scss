@@ -1,0 +1,514 @@
+@charset "utf-8";
+@import "variables";
+
+/*** CSSreset ***/
+* {
+  box-sizing: border-box;
+}
+body {
+  color: #333;
+  font-family: 'Sawarabi Gothic', '游ゴシック Medium', YuGothic, YuGothicM, 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, sans-serif;
+  overflow-x: hidden;
+}
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+p, section, article, header, footer,
+nav, form, input, div {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+}
+/*** media query ***/
+@mixin mediaXl {
+  @media screen and (min-width: $widthXl) {
+    @content;
+  }
+}
+@mixin mediaPc {
+  @media screen and (max-width: $widthXl) {
+    @content;
+  }
+}
+@mixin mediaTab {
+  @media screen and (max-width: $widthLg) {
+    @content;
+  }
+}
+@mixin mediaSp {
+  @media screen and (max-width: $widthMd) {
+    @content;
+  }
+}
+@mixin mediaXs {
+  @media screen and (max-width: $widthSm) {
+    @content;
+  }
+}
+/*** other @mixin ***/
+@mixin bgImg($url) {
+  background-image: url($url);
+  //urlを '' で囲うこと！
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@mixin box($bgColor: #fff, $color: #000, $fWeight: 400) {
+  background-color: $bgColor;
+  color: $color;
+  font-weight: $fWeight;
+}
+@mixin centering {
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+@mixin flex {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display: flex;
+}
+@mixin flexSa {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+@mixin flexSb {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+@mixin clearFix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+/*** global ***/
+@mixin topPos($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  color: #fff;
+  font-family: 'Noto Serif JP', 游明朝, 'Yu Mincho', YuMincho, 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', HGS明朝E, メイリオ, Meiryo, serif;
+}
+@mixin float($position, $Direction, $margin) {
+  float: $position;
+  margin-#{$Direction}: $wSpace * 0.1;
+  width: calc(50% - #{$wSpace} * 0.1);
+  @include mediaSp {
+    margin: 0 0 $margin 0;
+    width: 100%;
+  }
+}
+main {
+    display:block; //IE用
+}
+.container {
+  max-width: 1200px;
+}
+.line {
+  width: 100%;
+}
+.txt-style {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
+.br-xs {
+  display: none;
+  @include mediaXs {
+    display: block;
+  }
+}
+.photo {
+  margin: 0 auto;
+  box-shadow: 5px 5px 5px 5px;
+  max-width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translate(0, 50px);
+  transition: all 1.5s;
+  &.fade-in {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  @include mediaTab {
+    max-width: 80%;
+  }
+  @include mediaSp {
+    max-width: 100%;
+  }
+}
+/*** header ***/
+header {
+  position: relative;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  opacity: 0.8;
+  width: 100%;
+  @include bgImg('../img/bg-01.png');
+  img {
+    height: 48px;
+  }
+  .container {
+    height: 56px;
+    @include flexSb;
+  }
+}
+.nav-list {
+  @include mediaSp {
+    display: none;
+  }
+  li {
+    display: inline-block;
+    padding: 0 4px 0px 4px;
+    box-sizing: content-box;
+    color: #fff;
+    font-size: 1.2rem;
+    a {
+      color: #fff;
+      transition: 0.2s;
+      &:hover {
+        border-bottom: solid 3px #fff;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+#menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 16px 32px 0 32px;
+  opacity: 0.9;
+  width: 50%;
+  height: 240px;
+  z-index: 999;
+  @include bgImg('../img/bg-01.png');
+  li {
+    margin-bottom: 4px;
+  }
+  a {
+    border-bottom: solid 1px #fff;
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: 0.2s;
+    &:hover {
+      border-bottom: solid 3px #fff;
+    }
+  }
+}
+#nav-btn {
+  display: none;
+  @include mediaSp {
+    display: block;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  i {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 12px 16px 0 0;
+    z-index: 9999;
+    color: #fff;
+    font-size: 2rem;
+    &:nth-of-type(2) {
+      display: none;
+      padding-right: 20px;
+    }
+  }
+}
+/*** top ***/
+.top {
+  position: relative;
+  @include bgImg('../img/bg-01.png');
+  .inner {
+    width: 75%;
+    height: 100vh;
+    @include bgImg('../img/bg-top.jpg');
+    margin-right: auto;
+  }
+  &-txtbox {
+    @include topPos(37%, 55.5%);
+    @include mediaXs {
+      top: 41%;
+    }
+    h1 {
+      padding: 8px;
+      font-size: 3rem;
+      letter-spacing: 4px;
+      @include mediaTab {
+        font-size: 2.5rem;
+      }
+      @include mediaSp {
+        font-size: 1.7rem;
+      }
+      @include mediaXs {
+        font-size: 1rem;
+      }
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 10px 0 0 12px;
+      @include mediaSp {
+        font-size: 1rem;
+      }
+      @include mediaXs {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+/*** intro ***/
+.intro {
+  margin: $wSpace 0;
+  @include bgImg('../img/bg-02.jpg');
+  .container {
+    padding: $wSpace 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .inner {
+    margin: 0 auto;
+    text-align: center;
+  }
+  &-txt {
+    font-size: 1.5rem;
+  }
+  p:first-of-type {
+    margin-bottom: 16px;
+  }
+}
+/*** gallery ***/
+.gallery {
+  padding: 0 24px;
+  @include mediaTab {
+    padding: 0;
+  }
+  .col-lg-3 {
+    text-align: center;
+    @include mediaSp {
+      padding: 0 30px;
+    }
+  }
+  &-txt {
+    margin: $wSpace auto;
+    padding: 0 24px;
+  }
+  &-top {
+    .txtbox {
+      @include mediaTab {
+      margin-top: $wSpace;
+      }
+    }
+  }
+  .col-lg-3:first-of-type {
+    // margin-top: auto; //IEで効かない
+    @include flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    img {
+      width: 100%; //IE用
+    }
+  }
+  &-mid {
+    margin: $wSpace auto;
+    padding: $wSpace;
+    @include bgImg('../img/bg-03.jpg');
+    @include flex;
+    @include mediaSp {
+      display: block;
+      padding: $wSpace 0;
+    }
+    p {
+      @include mediaTab {
+        font-size: 16px;
+      }
+    }
+    &-img {
+      text-align: center;
+      width: 65%;
+      @include mediaTab {
+        width: 90%;
+        text-align: left;
+      }
+      @include mediaSp {
+        margin: 0 auto;
+        width: 85%;
+      }
+    }
+    .container {
+      position: relative;
+    }
+    &-txt {
+      position: absolute;
+      top: 20%;
+      right: 0;
+      padding: 24px;
+      background-color: #333;
+      box-shadow: 0px 0px 8px 8px #fff;
+      color: #fff;
+      width: 50%;
+      @include mediaSp {
+        position: static;
+        margin: 24px auto 0;
+        padding: 16px;
+        width: 85%;
+      }
+    }
+  }
+  &-bottom {
+    margin-bottom: $wSpace;
+    .col-lg-3:nth-of-type(2) {
+      // margin-top: auto; IEで効かない
+      @include flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end;
+      img {
+        width: 100%; //IE用
+      }
+    }
+    .txtbox {
+      @include mediaTab {
+        margin-bottom: $wSpace;
+      }
+    }
+  }
+}
+/*** info ***/
+.info {
+  padding: $wSpace;
+  @include bgImg('../img/bg-02.jpg');
+  @include mediaXs {
+    padding: $wSpace * 0.3;
+  }
+  h1 {
+    margin-bottom: 24px;
+  }
+  .inner {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: $wSpace * 0.3;
+  }
+}
+.schedule {
+  margin-bottom: $wSpace;
+  @include mediaXs {
+    margin-bottom: $wSpace * 0.5;
+  }
+  &-txt {
+    @include mediaXs {
+      font-size: 1.1rem;
+    }
+  }
+}
+.times {
+  margin: 16px 0;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+.note {
+  margin-top: 24px;
+  font-size: 1rem;
+  a {
+    text-decoration: none;
+  }
+}
+.map {
+  @include clearFix;
+  &-txt {
+    @include float(left, right, 24px);
+    p {
+      @include mediaXs {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+.gglmap {
+  @include float(right, left, 0);
+  .inner {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    overflow: hidden;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+/*** about ***/
+.about {
+  margin: $wSpace + 56px 0 $wSpace  0;
+  @include bgImg('../img/bg-02.jpg');
+  .container {
+    padding: $wSpace * 0.5 $wSpace;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+/*** footer ***/
+footer {
+  margin-top: $wSpace;
+  @include bgImg('../img/bg-03.jpg');
+  .container {
+    padding: $wSpace * 0.5 $wSpace;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  a {
+    color: #333;
+    &:hover {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+  li:last-child {
+    padding: 16px 0 24px 0;
+  }
+}
+.copy-r {
+  text-align: center;
+}
